@@ -119,6 +119,15 @@
         }
       },
       {
+        "package": "PerfectXML",
+        "repositoryURL": "https://github.com/PerfectlySoft/Perfect-XML.git",
+        "state": {
+          "branch": null,
+          "revision": "0b169ae3f15a60675b9fd4ca1e3592832fd94418",
+          "version": "3.0.0"
+        }
+      },
+      {
         "package": "Random",
         "repositoryURL": "https://github.com/vapor/random.git",
         "state": {
@@ -170,6 +179,15 @@
           "branch": null,
           "revision": "a6959d9bf1584870dab47b5c3d00dc31b2029b50",
           "version": "2.4.2"
+        }
+      },
+      {
+        "package": "libxml2",
+        "repositoryURL": "https://github.com/PerfectlySoft/Perfect-libxml2.git",
+        "state": {
+          "branch": null,
+          "revision": "276b1e626240c797338beb95f8194c13695f5ba9",
+          "version": "2.0.1"
         }
       }
     ]

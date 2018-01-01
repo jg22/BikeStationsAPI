@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Hello3",
+    name: "BikeStations",
     products: [
         .library(name: "App", targets: ["App"]),
         .executable(name: "Run", targets: ["Run"])
@@ -11,9 +11,10 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", .upToNextMajor(from: "2.1.0")),
         .package(url: "https://github.com/vapor/fluent-provider.git", .upToNextMajor(from: "1.2.0")),
+        .package(url: "https://github.com/PerfectlySoft/Perfect-XML.git", .upToNextMajor(from: "3.0.0")),        
     ],
     targets: [
-        .target(name: "App", dependencies: ["Vapor", "FluentProvider"],
+        .target(name: "App", dependencies: ["Vapor", "FluentProvider", "PerfectXML"],
                 exclude: [
                     "Config",
                     "Public",
@@ -23,4 +24,3 @@ let package = Package(
         .testTarget(name: "AppTests", dependencies: ["App", "Testing"])
     ]
 )
-
