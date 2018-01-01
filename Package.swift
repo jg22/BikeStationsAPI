@@ -11,10 +11,11 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", .upToNextMajor(from: "2.1.0")),
         .package(url: "https://github.com/vapor/fluent-provider.git", .upToNextMajor(from: "1.2.0")),
-        .package(url: "https://github.com/PerfectlySoft/Perfect-XML.git", .upToNextMajor(from: "3.0.0")),        
+        .package(url: "https://github.com/PerfectlySoft/Perfect-XML.git", .upToNextMajor(from: "3.0.0")),
+        .package(url: "https://github.com/BrettRToomey/Jobs.git", from: "1.1.1"),
     ],
     targets: [
-        .target(name: "App", dependencies: ["Vapor", "FluentProvider", "PerfectXML"],
+        .target(name: "App", dependencies: ["Vapor", "FluentProvider", "PerfectXML","Jobs"],
                 exclude: [
                     "Config",
                     "Public",

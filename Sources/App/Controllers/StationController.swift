@@ -1,6 +1,8 @@
 import Vapor
 import HTTP
 import PerfectXML
+import Dispatch
+import Jobs
 //import PerfectNet
 //import PerfectNotifications
 
@@ -14,6 +16,7 @@ final class StationController {
     
     var stations = [Station]()
     var drop : Droplet?
+    //var timer : DispatchSourceTimer?
 
     /*
     func generateStations() {
@@ -39,9 +42,38 @@ final class StationController {
     }
     
     func updateStations(request: Request) throws -> JSON {
+        
         if let d = self.drop {
             self.getStations(drop: d, updateOnly: true)
         }
+        
+        Jobs.add(interval: .seconds(30)) {
+            //print("👋 I'm printed every 4 seconds!")
+            if let d = self.drop {
+                self.getStations(drop: d, updateOnly: true)
+            }
+        }
+        
+        
+        /*
+        if timer == nil {
+            timer = DispatchSource.makeTimerSource()
+            
+            if let t = timer {
+                t.setEventHandler() {
+                    // task
+                    Swift.print("update stations")
+                    if let d = self.drop {
+                        self.getStations(drop: d, updateOnly: true)
+                    }
+                }
+                t.schedule(deadline: .now() + .seconds(30), repeating: .seconds(30), leeway: .seconds(30))
+                t.activate()
+            }
+            
+        }
+        */
+        
         return try JSON(node: ["message" : "Station updated"])
 
     }
