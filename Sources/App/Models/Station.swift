@@ -25,12 +25,20 @@ final class Station : NodeRepresentable, JSONRepresentable {
         
     func makeJSON() throws -> JSON {
         var json = JSON()
+        
+        
+        try json.set("id", stationID)
+        try json.set("a", available)
+        try json.set("e", empty)
+        
+        /*
         try json.set("stationID", stationID)
         try json.set("name", name)
         try json.set("lat", lat)
         try json.set("lon", lon)
         try json.set("available", available)
         try json.set("empty", empty)
+        */
         return json
     }
 
