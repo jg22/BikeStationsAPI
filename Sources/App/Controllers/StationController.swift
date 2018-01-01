@@ -52,7 +52,6 @@ final class StationController {
         
         do {
             let bikesResponse = try drop.client.get("http://www.c-bike.com.tw/xml/stationlistopendata.aspx")
-            
             if let bodyBytes = bikesResponse.body.bytes {
             
                 if let string = String(bytes: bodyBytes, encoding: String.Encoding.utf8) {
@@ -116,7 +115,7 @@ final class StationController {
             
         }
         catch {
-            print("error in getting bikes")
+            print("error in getting bikes \(error)")
         }
         
         
