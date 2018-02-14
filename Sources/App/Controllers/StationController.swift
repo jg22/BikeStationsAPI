@@ -3,8 +3,6 @@ import HTTP
 import PerfectXML
 import Dispatch
 import Jobs
-//import PerfectNet
-//import PerfectNotifications
 
 struct StaStruct {
     var StationID : Int
@@ -48,7 +46,7 @@ final class StationController {
         }
         
         Jobs.add(interval: .seconds(30)) {
-            //print("👋 I'm printed every 4 seconds!")
+            //Swift.print("👋 I'm printed every 4 seconds!")
             if let d = self.drop {
                 self.getStations(drop: d, updateOnly: true)
             }
