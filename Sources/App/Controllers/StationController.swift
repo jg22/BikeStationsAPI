@@ -29,9 +29,31 @@ final class StationController {
         stations.get("all", handler: allStations)
         //stations.get("push", handler: pushNotification)
         stations.get("update", handler: updateStations)
+        stations.get("test", handler: testConnection)
         
         self.drop = drop
     }
+    
+    func testConnection(request: Request) throws -> JSON {
+        
+        do {
+            
+            if let d = self.drop {
+                let bikesResponse = try d.client.get("https://apple.com")
+                if let bodyBytes = bikesResponse.body.bytes {
+                    if let string = String(bytes: bodyBytes, encoding: String.Encoding.utf8) {
+                        Swift.print("apple \(string)")
+                    }
+                }
+            }
+        }
+        catch {
+            Swift.print("test connection error \(error)")
+        }
+        
+        return try JSON(node : ["connection to Apple.com" : "worked"])
+    }
+    
     
     func allStations(request: Request) throws -> JSON {
         //let station = try Station(name: "new", available: 10, empty: 7)
@@ -44,14 +66,15 @@ final class StationController {
         if let d = self.drop {
             self.getStations(drop: d, updateOnly: true)
         }
-        
+ 
+        /*
         Jobs.add(interval: .seconds(30)) {
-            //Swift.print("👋 I'm printed every 4 seconds!")
+            Swift.print("👋 I'm printed every 4 seconds!")
             if let d = self.drop {
                 self.getStations(drop: d, updateOnly: true)
             }
         }
-        
+        */
         
         /*
         if timer == nil {
